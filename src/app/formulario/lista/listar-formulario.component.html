@@ -1,0 +1,69 @@
+<h1>
+    Listado de Encuestas</h1>
+<hr>
+
+
+<div class="row">
+    <div class="col text-right">
+        <button routerLink="/crear-formulario" class="btn btn-primary">
+    <i class="fa fa-plus"></i>
+    Agregar encuesta
+  </button>
+    </div>
+    <div class="col text-left">
+        <button (click)="salir()" class="btn btn-danger">
+  <i class="fa fa-"></i>
+    Salir
+</button>
+    </div>
+</div>
+
+
+<table *ngIf="!cargando && formato.length > 0" class="table mt-3 animated fadeIn faster animated fadeIn faster">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Documento</th>
+            <th scope="col">Mail</th>
+            <th scope="col">Fecha</th>
+            <th scope="col">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let for of formato; let i = index">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{ for.documento }}</td>
+            <td>{{ for.mail }}</td>
+            <td>{{ for.fecha | date }}</td>
+            <td>
+
+                <button class="btn btn-info mr-1" [routerLink]="['/ver-formulario', for.id ]" title="Ver formulario {{for.documento}}">
+        <i class="fa fa-eye"></i>
+      </button>
+
+                <button class="btn btn-danger" (click)="borrarHeroe( for, i ) ">
+        <i class="fa fa-trash"></i>
+      </button>
+
+
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div *ngIf="!cargando && formato.length === 0" class="alert alert-warning text-center mt-3 animated fadeIn faster">
+    <h4 class="alert-heading">No hay registros</h4>
+    <p>
+        <i class="fa fa-exclamation fa-2x"></i>
+    </p>
+</div>
+
+<div *ngIf="cargando" class="alert alert-info text-center mt-3 animated fadeIn faster">
+    <h4 class="alert-heading">Cargando</h4>
+    <p>
+        <i class="fa fa-sync-alt fa-spin fa-2x"></i>
+    </p>
+    <p class="mb-0">
+        Espere por favor
+    </p>
+</div>

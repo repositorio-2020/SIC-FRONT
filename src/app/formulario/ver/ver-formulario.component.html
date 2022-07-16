@@ -1,0 +1,82 @@
+<h1>
+  <small>Ver Encuesta</small> </h1>
+<hr>
+
+
+
+
+<div class="row animated fadeIn faster">
+  <div class="col">
+
+
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="form-group">
+              <label>Documento</label>
+              <input type="text" class="form-control" placeholder="documento" [(ngModel)]="formulario.documento" name="documento" required appFormatNumber [maxLength]="10">
+          </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="form-group">
+              <label>E-mail</label>
+              <input type="email" class="form-control" [(ngModel)]="formulario.mail" name="mail" placeholder="Mail">
+
+          </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="form-group">
+              <label>Marca</label>
+
+              <select name="miselect" [(ngModel)]="formulario.marca" class="form-control" required>
+                <option [ngValue]="marca.id" *ngFor="let marca of marcas">{{marca.nombre}}</option>
+                </select>
+
+          </div>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col">
+              <div class="form-group">
+                <label>Comentario</label>
+                <textarea type="text" rows="2" class="form-control" [(ngModel)]="formulario.comentario" name="comentario" placeholder="Comentario">
+
+                </textarea>
+            </div>
+            </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <span>Fecha: {{formulario.fecha | date}}</span>
+          </div>
+        </div>
+          <!-- <div class="form-group">
+              <label>Id</label>
+              <input type="number" class="form-control" placeholder="ID" [(ngModel)]="formulario.id" name="id">
+              <small class="form-text text-muted">..</small>
+          </div> -->
+
+
+
+
+
+
+
+
+
+
+
+          <hr>
+          <div class="form-group text-center">
+              <button type="submit" class="btn btn-primary w-25"  routerLink="/formulario">
+        <i class="fa fa-save"></i>
+        Regresar
+      </button>
+          </div>
+
+
+
+
+
+  </div>
+</div>
+
